@@ -30,7 +30,6 @@ import { RecentTransactions } from "@/components/recent-transactions"
 import { TransferForm } from "@/components/transfer-form"
 import { AccountSettings } from "@/components/account-settings"
 import { Badge } from "@/components/ui/badge"
-import { Logo } from "@/components/ui/logo"
 import { MonthlyStatement } from "@/components/monthly-statement"
 import { UserProfile } from "@/components/user-profile"
 import { Investments } from "@/components/investments"
@@ -61,6 +60,18 @@ export function DashboardPage() {
   const [menuOpen, setMenuOpen] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
+
+  // Datos del usuario logeado
+  const [userData, setUserData] = useState({
+    fullName: "José Paulino Pérez Godínez",
+    lastAccess: new Date().toLocaleString('es-MX', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  })
 
   // Detectar si es móvil
   useEffect(() => {
@@ -140,16 +151,11 @@ export function DashboardPage() {
         )}
       >
         <div className="flex h-14 items-center justify-between border-b px-4">
-          {menuOpen ? (
-            <Logo />
-          ) : (
-            <div className="w-full flex justify-center">
-              <Logo showText={false} />
-            </div>
-          )}
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
-            <X className="h-4 w-4" />
-          </Button>
+          <div className="w-full flex justify-end md:justify-start">
+            <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
         <nav className="flex-1 overflow-auto py-4">
           <div className="px-4 py-2">
@@ -235,7 +241,12 @@ export function DashboardPage() {
             </Button>
           </div>
 
-          <div className="text-center font-bold text-lg">BANCA ELECTRÓNICA</div>
+          <div className="text-center space-y-1">
+            <p className="text-xs text-muted-foreground">{userData.fullName}</p>
+            <p className="text-xs text-muted-foreground">
+              Último acceso: {userData.lastAccess}
+            </p>
+          </div>
 
           <div className="flex items-center space-x-4">
             <Dialog open={showNotifications} onOpenChange={setShowNotifications}>
@@ -283,10 +294,16 @@ export function DashboardPage() {
             <Button variant="ghost" size="icon" onClick={toggleMenu} className="mr-2">
               <Menu className="h-4 w-4" />
             </Button>
-            <Logo size="sm" />
           </div>
 
-          <div className="text-center font-bold text-sm">Banca Electrónica</div>
+          <div className="text-center space-y-1">
+            <p className="text-sm font-medium truncate max-w-[120px]">
+              {userData.fullName.split(' ')[0]} {userData.fullName.split(' ')[1]}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {new Date().toLocaleDateString('es-MX')}
+            </p>
+          </div>
 
           <div className="flex items-center space-x-2">
             <Dialog>
@@ -621,7 +638,7 @@ export function DashboardPage() {
         </main>
         {/* Footer */}
         <footer className="mt-auto py-3 px-4 border-t text-center text-xs text-gray-500">
-          <p>Versión 1.0.0 | © 2025 La Koope</p>
+          <p>Versión 1.0.0 | © 2025</p>
         </footer>
       </div>
     </div>
