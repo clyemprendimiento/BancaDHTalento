@@ -235,7 +235,7 @@ export function DashboardPage() {
             </Button>
           </div>
 
-          <div className="text-center font-bold text-lg">Banca Electrónica</div>
+          <div className="text-center font-bold text-lg">BANCA ELECTRÓNICA</div>
 
           <div className="flex items-center space-x-4">
             <Dialog open={showNotifications} onOpenChange={setShowNotifications}>
@@ -621,7 +621,7 @@ export function DashboardPage() {
         </main>
         {/* Footer */}
         <footer className="mt-auto py-3 px-4 border-t text-center text-xs text-gray-500">
-          <p>Versión 1.0.0 | © 2023 Talento DH</p>
+          <p>Versión 1.0.0 | © 2025 La Koope</p>
         </footer>
       </div>
     </div>

@@ -122,7 +122,7 @@ export default function LoginPage() {
         </Card>
 
         <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-          <p>© 2023 Banca Digital BR Rural. Todos los derechos reservados.</p>
+          <p>© 2025 La Koope. Todos los derechos reservados.</p>
           <p className="mt-1">
             <Link href="/terms" className="hover:underline">
               Términos y Condiciones
